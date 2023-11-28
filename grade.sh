@@ -30,12 +30,17 @@ javac -cp .:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar grading-area/*.java
 if [[ $? == 0 ]]
 then
     echo "Successfully compiled the test"
+
+    java -cp .:grading-area:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar org.junit.runner.JUnitCore TestListExamples > TestResult.txt
+
+    echo -e "**************\n Test Result: \n**************"
+    grep "Failures" TestResult.txt
+    grep "OK" TestResult.txt
+
 else
     echo "Fail compiling"
 fi
 
-java -cp .:grading-area:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar org.junit.runner.JUnitCore TestListExamples > TestResult.txt
 
-echo -e "**************\n Test Result: \n**************"
-grep "Failures" TestResult.txt
-grep "OK" TestResult.txt
+
+
