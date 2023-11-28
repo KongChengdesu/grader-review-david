@@ -16,7 +16,7 @@ echo 'Finished cloning'
 # tests
 if [[ -f "student-submission/ListExamples.java" ]]
 then
-    echo "Find the testing file"
+    echo "Finding the testing file..."
     cp student-submission/ListExamples.java ./grading-area/
     cp *.java ./grading-area/
     echo "successfully copy files"
@@ -29,9 +29,9 @@ javac -cp .:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar grading-area/*.java
 
 if [[ $? == 0 ]]
 then
-    echo "Successfully complie the test"
+    echo "Successfully compiled the test"
 else
-    echo "Fail compling."
+    echo "Fail compiling"
 fi
 
 java -cp .:grading-area:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar org.junit.runner.JUnitCore TestListExamples > TestResult.txt
